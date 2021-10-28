@@ -41,3 +41,15 @@ class JsonConverter:
         CO2.text = row['CO2']
         TEMPERATURE.text = row['temperature']
         return PACKET
+
+
+def XMLparser(path = "data.xml"):
+    tree = ET.parse("data.xml")
+    root = tree.getroot()
+    print("tag=%s, attrib=%s" % (root.tag, root.attrib))
+
+    for child in root:
+        print(" tag=%s, attrib=%s" % (child.tag, child.attrib))
+        for i in child:
+            print("     tag=%s, attrib=%s" % (i.tag, i.attrib))
+            print("         Value = "+str(i.text))
